@@ -1,18 +1,20 @@
-def sum_negative_between_max_min(arr):
-    if not arr:
+def sum_of_negatives_between_max_min(arr):
+    if not arr:  # Проверяем, что массив не пустой
         return 0
 
     max_index = arr.index(max(arr))
     min_index = arr.index(min(arr))
 
-    start_index = min(max_index, min_index) + 1
-    end_index = max(max_index, min_index)
+    # Находим границы между max и min
+    start = min(max_index, min_index) + 1
+    end = max(max_index, min_index)
 
-    sum_negatives = sum(x for x in arr[start_index:end_index] if x < 0)
+    # Суммируем отрицательные элементы
+    negative_sum = sum(x for x in arr[start:end] if x < 0)
 
-    return sum_negatives
+    return negative_sum
 
 # Пример использования
-A = [-1, 2, -3, 4, -5, 6, -7]
-result = sum_negative_between_max_min(A)
-print("Сумма отрицательных элементов между максимальным и минимальным:", result)
+A = [3, -1, -4, 2, -2, 6, -3, 8, 0]
+result = sum_of_negatives_between_max_min(A)
+print("Сумма отрицательных элементов между max и min:", result)
